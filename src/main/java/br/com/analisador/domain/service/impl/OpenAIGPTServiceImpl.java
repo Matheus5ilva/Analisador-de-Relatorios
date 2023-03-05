@@ -8,31 +8,31 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+@Service
 public class OpenAIGPTServiceImpl implements OpenAIGPTService {
 
     private static final String OPENAI_API_ENDPOINT = "https://api.openai.com/v1/engines/text-davinci-003/completions";
 
-    private final String apiKey;
     private final CloseableHttpClient httpClient;
 
-    public OpenAIGPTServiceImpl(String apiKey) {
-        this.apiKey = apiKey;
+    public OpenAIGPTServiceImpl() {
         this.httpClient = HttpClients.createDefault();
     }
 
     @Override
-    public String generateText(String prompt) throws IOException {
+    public String generateText(String apiKey, String prompt) throws IOException {
         HttpPost httpPost = new HttpPost(OPENAI_API_ENDPOINT);
         httpPost.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         httpPost.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + apiKey);
 
         JSONObject json = new JSONObject();
         json.put("prompt", prompt);
-        json.put("max_tokens", 1000);
+        json.put("max_tokens", 800);
 
         StringEntity entity = new StringEntity(json.toString(), StandardCharsets.UTF_8);
         httpPost.setEntity(entity);

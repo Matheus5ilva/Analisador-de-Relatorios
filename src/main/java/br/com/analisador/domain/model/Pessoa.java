@@ -3,11 +3,16 @@ package br.com.analisador.domain.model;
 import br.com.analisador.domain.model.enums.TipoPessoa;
 import jakarta.persistence.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Pessoa {
+public class Pessoa implements Serializable{
+
+    @Serial
+    private static final long serialVersionUID = -3452958440683487318L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
