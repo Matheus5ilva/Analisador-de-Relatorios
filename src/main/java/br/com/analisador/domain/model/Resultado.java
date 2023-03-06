@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Resultado {
 
@@ -15,6 +17,8 @@ public class Resultado {
     private Integer numeroToken;
     private Empresa empresa;
     private Usuario usuario;
+
+    private LocalDateTime dataHoraAnalise;
 
     public Long getId() {
         return id;
@@ -54,6 +58,14 @@ public class Resultado {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public LocalDateTime getDataHoraAnalise() {
+        return dataHoraAnalise;
+    }
+
+    public void setDataHoraAnalise(LocalDateTime dataHoraAnalise) {
+        this.dataHoraAnalise = dataHoraAnalise;
     }
 
     @Override
