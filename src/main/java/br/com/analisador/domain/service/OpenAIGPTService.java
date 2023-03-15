@@ -41,9 +41,9 @@ public class OpenAIGPTService {
         try (var response = httpClient.execute(httpPost)) {
             String jsonResponse = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
             JSONObject jsonObject = new JSONObject(jsonResponse);
-            String text = jsonObject.getJSONArray("choices").getJSONObject(0).getString("text");
-            return text;
-            //return jsonResponse;
+            //String text = jsonObject.getJSONArray("choices").getJSONObject(0).getString("text");
+            //return text;
+            return jsonResponse;
         }
     }
 

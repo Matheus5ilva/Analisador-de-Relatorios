@@ -1,9 +1,6 @@
 package br.com.analisador.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -13,9 +10,13 @@ public class Resultado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "analise", length = 5000)
     private String analise;
     private Integer numeroToken;
+    @ManyToOne
     private Empresa empresa;
+    @ManyToOne
     private Usuario usuario;
 
     private LocalDateTime dataHoraAnalise;
