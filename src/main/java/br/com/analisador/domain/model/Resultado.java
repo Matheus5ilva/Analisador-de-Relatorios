@@ -21,6 +21,18 @@ public class Resultado {
 
     private LocalDateTime dataHoraAnalise;
 
+    public Resultado() {
+    }
+
+    public Resultado(Long id, String analise, Integer numeroToken, Empresa empresa, Usuario usuario, LocalDateTime dataHoraAnalise) {
+        this.id = id;
+        this.analise = analise;
+        this.numeroToken = numeroToken;
+        this.empresa = empresa;
+        this.usuario = usuario;
+        this.dataHoraAnalise = dataHoraAnalise;
+    }
+
     public Long getId() {
         return id;
     }

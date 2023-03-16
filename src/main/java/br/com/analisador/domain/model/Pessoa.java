@@ -21,6 +21,16 @@ public class Pessoa implements Serializable{
 
     private Boolean ativo;
 
+    public Pessoa(Long id, String nome, TipoPessoa tipoPessoa, Boolean ativo) {
+        this.id = id;
+        this.nome = nome;
+        this.tipoPessoa = tipoPessoa;
+        this.ativo = ativo;
+    }
+
+    public Pessoa() {
+    }
+
     public Long getId() {
         return id;
     }

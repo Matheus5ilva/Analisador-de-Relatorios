@@ -4,6 +4,7 @@ import br.com.analisador.domain.model.dto.ResultadoDTO;
 import br.com.analisador.domain.service.ExcelParaCsv;
 import br.com.analisador.domain.service.PesquisaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class PesquisaController {
     @Autowired
     private PesquisaService pesquisaService;
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public ResultadoDTO realizarConsulta(@RequestPart MultipartFile arquivo, @RequestParam("nomeRelatorio") String nome,
                                          @RequestParam("usuarioId") Long usuarioId) {
 
