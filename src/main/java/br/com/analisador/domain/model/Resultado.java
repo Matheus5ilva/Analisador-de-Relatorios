@@ -11,6 +11,7 @@ public class Resultado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String nomeRelatorio;
     @Column(name = "analise", length = 5000)
     private String analise;
     private Integer numeroToken;
@@ -24,8 +25,9 @@ public class Resultado {
     public Resultado() {
     }
 
-    public Resultado(Long id, String analise, Integer numeroToken, Empresa empresa, Usuario usuario, LocalDateTime dataHoraAnalise) {
+    public Resultado(Long id, String nomeRelatorio, String analise, Integer numeroToken, Empresa empresa, Usuario usuario, LocalDateTime dataHoraAnalise) {
         this.id = id;
+        this.nomeRelatorio = nomeRelatorio;
         this.analise = analise;
         this.numeroToken = numeroToken;
         this.empresa = empresa;
@@ -39,6 +41,14 @@ public class Resultado {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNomeRelatorio() {
+        return nomeRelatorio;
+    }
+
+    public void setNomeRelatorio(String nomeRelatorio) {
+        this.nomeRelatorio = nomeRelatorio;
     }
 
     public String getAnalise() {

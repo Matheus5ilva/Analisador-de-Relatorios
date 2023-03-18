@@ -3,6 +3,7 @@ package br.com.analisador.domain.service;
 import br.com.analisador.domain.exception.EmpresaNaoEncontradoException;
 import br.com.analisador.domain.exception.EntidadeEmUsoException;
 import br.com.analisador.domain.model.Empresa;
+import br.com.analisador.domain.model.dto.EmpresaDTO;
 import br.com.analisador.domain.repository.EmpresaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,13 @@ public class EmpresaService {
     private EmpresaRepository empresaRepository;
 
     @Transactional
-    public Empresa salvar(Empresa empresa) {
+    public Empresa salvar(EmpresaDTO empresaDto) {
+        Empresa empresa = empresaDto.transformaEmObjeto();
+        return empresaRepository.save(empresa);
+    }
+
+    @Transactional
+    public Empresa atualizar(Empresa empresa) {
         return empresaRepository.save(empresa);
     }
 

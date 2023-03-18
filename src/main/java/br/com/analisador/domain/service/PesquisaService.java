@@ -43,7 +43,7 @@ public class PesquisaService {
             resultadoDTO.setNomeRelatorio(nomeRelatorio);
             resultadoDTO.setAnalise(analise);
 
-            this.salvaResultado(usuario, empresa, response);
+            this.salvaResultado(usuario, empresa, nomeRelatorio,response);
 
             return resultadoDTO;
         } catch (IOException e) {
@@ -52,8 +52,9 @@ public class PesquisaService {
 
     }
 
-    private void salvaResultado(Usuario usuario, Empresa empresa, String resposta){
+    private void salvaResultado(Usuario usuario, Empresa empresa, String nomeRelatorio, String resposta){
         Resultado resultado = new Resultado();
+        resultado.setNomeRelatorio(nomeRelatorio);
         resultado.setEmpresa(empresa);
         resultado.setUsuario(usuario);
 

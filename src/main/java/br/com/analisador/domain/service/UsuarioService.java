@@ -4,6 +4,7 @@ import br.com.analisador.domain.exception.EntidadeEmUsoException;
 import br.com.analisador.domain.exception.UsuarioNaoEncontradoException;
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Usuario;
+import br.com.analisador.domain.model.dto.UsuarioDTO;
 import br.com.analisador.domain.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,16 @@ public class UsuarioService {
     private EmpresaService empresaService;
 
     @Transactional
-    public Usuario salvar(Usuario usuario) {
+    public Usuario salvar(UsuarioDTO usuarioDto) {
+        Empresa empresa = empresaService.buscarOuFalhar(usuarioDto.getEmpresa().getId());
+        usuarioDto.setEmpresa(empresa);
+        Usuario usuario = usuarioDto.transformaObjeto();
+        return usuarioRepository.save(usuario);
+
+    }
+
+    @Transactional
+    public Usuario atualizar(Usuario usuario) {
         Empresa empresa = empresaService.buscarOuFalhar(usuario.getEmpresa().getId());
         usuario.setEmpresa(empresa);
         return usuarioRepository.save(usuario);

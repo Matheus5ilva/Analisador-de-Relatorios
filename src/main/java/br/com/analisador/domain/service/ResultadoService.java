@@ -18,4 +18,6 @@ public class ResultadoService {
     public Resultado salvar(Resultado resultado) {
         return resultadoRepository.save(resultado);
     }
+
+
 }

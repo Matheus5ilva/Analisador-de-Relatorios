@@ -3,9 +3,9 @@ package br.com.analisador.api.controller;
 import br.com.analisador.domain.exception.EmpresaNaoEncontradoException;
 import br.com.analisador.domain.exception.NegocioException;
 import br.com.analisador.domain.model.Empresa;
+import br.com.analisador.domain.model.dto.EmpresaDTO;
 import br.com.analisador.domain.repository.EmpresaRepository;
 import br.com.analisador.domain.service.EmpresaService;
-import jakarta.annotation.Resource;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,9 +35,9 @@ public class EmpresaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Empresa criarEmpresa(@RequestBody Empresa empresa){
+    public Empresa criarEmpresa(@RequestBody EmpresaDTO empresaDto){
         try{
-            return empresaService.salvar(empresa);
+            return empresaService.salvar(empresaDto);
         }catch (EmpresaNaoEncontradoException empresaException){
             throw new NegocioException(empresaException.getMessage(), empresaException);
         }
@@ -45,11 +45,11 @@ public class EmpresaController {
     }
 
     @PutMapping(value = "/editar/{empresaId}")
-    public Empresa editarEmpresa(@PathVariable Long empresaId, @RequestBody Empresa empresa){
+    public Empresa editarEmpresa(@PathVariable Long empresaId, @RequestBody EmpresaDTO empresaDto){
         try{
             Empresa empresaAtual = empresaService.buscarOuFalhar(empresaId);
-            BeanUtils.copyProperties(empresa, empresaAtual, "id");
-            return empresaService.salvar(empresaAtual);
+            BeanUtils.copyProperties(empresaDto, empresaAtual, "id");
+            return empresaService.atualizar(empresaAtual);
         }catch (EmpresaNaoEncontradoException empresaException) {
             throw new NegocioException(empresaException.getMessage(), empresaException);
         }
