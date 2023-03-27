@@ -17,12 +17,11 @@ public class UsuarioDTO {
 
     @NotBlank
     private String nome;
-    @NotBlank
+
     @NotNull
     private TipoPessoa tipoPessoa;
     @NotNull
     private Boolean ativo;
-
     @Valid
     @ConvertGroup(from = Default.class, to = Groups.EmpresaId.class)
     @NotNull
