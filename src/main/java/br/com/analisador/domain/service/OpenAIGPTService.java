@@ -25,7 +25,7 @@ public class OpenAIGPTService {
 
     public String generateText(String apiKey, String csv) throws IOException {
 
-        String prompt = "Analise o relatorio " + csv + " e realize a decisão para aumentar os lucros e reduzir gastos.";
+        String prompt = "Analise o relatorio " + csv + " e realize a decisão para aumentar os lucros e reduzir gastos da forma mais especifica.";
 
         HttpPost httpPost = new HttpPost(OPENAI_API_ENDPOINT);
         httpPost.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");

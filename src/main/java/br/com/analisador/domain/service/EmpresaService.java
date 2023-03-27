@@ -5,11 +5,13 @@ import br.com.analisador.domain.exception.EntidadeEmUsoException;
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.dto.EmpresaDTO;
 import br.com.analisador.domain.repository.EmpresaRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+
 
 @Service
 public class EmpresaService {

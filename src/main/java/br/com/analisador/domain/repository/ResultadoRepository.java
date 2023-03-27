@@ -1,7 +1,6 @@
 package br.com.analisador.domain.repository;
 
 import br.com.analisador.domain.model.Resultado;
-import br.com.analisador.domain.model.dto.RelatorioDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/relatorio")
 public class RelatorioController {
@@ -22,7 +24,7 @@ public class RelatorioController {
     private EmpresaService empresaService;
 
     @GetMapping(value = "/{empresaId}")
-    public RelatorioDTO index(@PathVariable Long empresaId){
+    public RelatorioDTO index(@PathVariable @Valid Long empresaId){
         Empresa empresa = empresaService.buscarOuFalhar(empresaId);
         return relatorioService.paginaInicial(empresa);
     }

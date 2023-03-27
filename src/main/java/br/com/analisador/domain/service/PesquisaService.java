@@ -4,15 +4,14 @@ import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.model.Usuario;
 import br.com.analisador.domain.model.dto.ResultadoDTO;
-import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDateTime;
 
 @Service
 public class PesquisaService {
@@ -60,7 +59,6 @@ public class PesquisaService {
 
         resultado.setAnalise(this.gerarResposta(resposta, true));
         resultado.setNumeroToken(Integer.parseInt(this.gerarResposta(resposta, false)));
-        resultado.setDataHoraAnalise(LocalDateTime.now());
         resultadoService.salvar(resultado);
 
     }

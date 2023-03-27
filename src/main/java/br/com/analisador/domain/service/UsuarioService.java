@@ -6,10 +6,11 @@ import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Usuario;
 import br.com.analisador.domain.model.dto.UsuarioDTO;
 import br.com.analisador.domain.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @Service
 public class UsuarioService {
@@ -21,6 +22,7 @@ public class UsuarioService {
 
     @Autowired
     private EmpresaService empresaService;
+
 
     @Transactional
     public Usuario salvar(UsuarioDTO usuarioDto) {

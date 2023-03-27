@@ -1,17 +1,35 @@
 package br.com.analisador.domain.model.dto;
 
+import br.com.analisador.core.validation.Groups;
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Usuario;
 import br.com.analisador.domain.model.enums.TipoPessoa;
 import br.com.analisador.domain.model.enums.TipoUsuario;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
+
 public class UsuarioDTO {
 
+    @NotBlank
     private String nome;
+    @NotBlank
+    @NotNull
     private TipoPessoa tipoPessoa;
+    @NotNull
     private Boolean ativo;
+
+    @Valid
+    @ConvertGroup(from = Default.class, to = Groups.EmpresaId.class)
+    @NotNull
     private Empresa empresa;
+    @Email
     private String email;
+    @NotNull
     private TipoUsuario tipoUsuario;
 
     public String getNome() {

@@ -4,10 +4,10 @@ import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.model.dto.RelatorioDTO;
 import br.com.analisador.domain.repository.ResultadoRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;

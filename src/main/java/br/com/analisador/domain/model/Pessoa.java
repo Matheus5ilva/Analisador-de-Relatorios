@@ -1,8 +1,12 @@
 package br.com.analisador.domain.model;
 
+import br.com.analisador.core.validation.Groups;
 import br.com.analisador.domain.model.enums.TipoPessoa;
-import jakarta.persistence.*;
 
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,10 +17,14 @@ public class Pessoa implements Serializable{
 
     @Serial
     private static final long serialVersionUID = -3452958440683487318L;
+    @NotNull(groups = Groups.EmpresaId.class)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nome;
+
     private TipoPessoa tipoPessoa;
 
     private Boolean ativo;

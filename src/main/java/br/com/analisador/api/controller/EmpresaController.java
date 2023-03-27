@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -35,7 +36,7 @@ public class EmpresaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Empresa criarEmpresa(@RequestBody EmpresaDTO empresaDto){
+    public Empresa criarEmpresa(@RequestBody @Valid EmpresaDTO empresaDto){
         try{
             return empresaService.salvar(empresaDto);
         }catch (EmpresaNaoEncontradoException empresaException){
@@ -45,7 +46,7 @@ public class EmpresaController {
     }
 
     @PutMapping(value = "/editar/{empresaId}")
-    public Empresa editarEmpresa(@PathVariable Long empresaId, @RequestBody EmpresaDTO empresaDto){
+    public Empresa editarEmpresa(@PathVariable Long empresaId, @RequestBody @Valid EmpresaDTO empresaDto){
         try{
             Empresa empresaAtual = empresaService.buscarOuFalhar(empresaId);
             BeanUtils.copyProperties(empresaDto, empresaAtual, "id");

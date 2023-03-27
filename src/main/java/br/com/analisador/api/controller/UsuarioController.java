@@ -2,17 +2,18 @@ package br.com.analisador.api.controller;
 
 import br.com.analisador.domain.exception.NegocioException;
 import br.com.analisador.domain.exception.UsuarioNaoEncontradoException;
-import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Usuario;
 import br.com.analisador.domain.model.dto.UsuarioDTO;
 import br.com.analisador.domain.repository.UsuarioRepository;
 import br.com.analisador.domain.service.EmpresaService;
 import br.com.analisador.domain.service.UsuarioService;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -40,12 +41,12 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario criarUsuario(@RequestBody UsuarioDTO usuarioDto){
+    public Usuario criarUsuario(@RequestBody @Valid UsuarioDTO usuarioDto){
         return usuarioService.salvar(usuarioDto);
     }
 
     @PutMapping(value = "/editar/{usuarioId}")
-    public Usuario editarUsuario(@PathVariable Long usuarioId, @RequestBody UsuarioDTO usuarioDto){
+    public Usuario editarUsuario(@PathVariable Long usuarioId, @RequestBody @Valid UsuarioDTO usuarioDto){
         try{
             Usuario usuarioAtual = usuarioService.buscarOuFalhar(usuarioId);
             BeanUtils.copyProperties(usuarioDto, usuarioAtual, "id");

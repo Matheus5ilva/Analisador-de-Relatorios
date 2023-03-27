@@ -1,7 +1,8 @@
 package br.com.analisador.domain.model;
 
-import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,6 +21,7 @@ public class Resultado {
     @ManyToOne
     private Usuario usuario;
 
+    @CreationTimestamp
     private LocalDateTime dataHoraAnalise;
 
     public Resultado() {

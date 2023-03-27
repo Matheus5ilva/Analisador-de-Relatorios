@@ -1,15 +1,28 @@
 package br.com.analisador.domain.model;
 
+import br.com.analisador.core.validation.Groups;
 import br.com.analisador.domain.model.enums.TipoPessoa;
 import br.com.analisador.domain.model.enums.TipoUsuario;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
+
 
 @Entity
 public class Usuario extends Pessoa{
+    @Valid
+    @ConvertGroup(from = Default.class, to = Groups.EmpresaId.class)
+    @NotNull
     @ManyToOne
     private Empresa empresa;
+    @Email
     private String email;
+    @NotNull
     private TipoUsuario tipoUsuario;
 
     public Usuario() {

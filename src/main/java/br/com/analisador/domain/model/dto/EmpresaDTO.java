@@ -2,14 +2,18 @@ package br.com.analisador.domain.model.dto;
 
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.enums.TipoPessoa;
-import br.com.analisador.domain.service.EmpresaService;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class EmpresaDTO {
-
+    @NotBlank
     private String nome;
+    @NotNull
     private TipoPessoa tipoPessoa;
-
+    @NotNull
     private Boolean ativo;
+    @NotBlank
     private String chaveApiKey;
 
     public String getNome() {
