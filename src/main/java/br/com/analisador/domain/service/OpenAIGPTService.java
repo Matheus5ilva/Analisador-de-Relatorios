@@ -33,7 +33,7 @@ public class OpenAIGPTService {
 
         JSONObject json = new JSONObject();
         json.put("prompt", prompt);
-        json.put("max_tokens", 4096);
+        json.put("max_tokens", 2048);
 
         StringEntity entity = new StringEntity(json.toString(), StandardCharsets.UTF_8);
         httpPost.setEntity(entity);
