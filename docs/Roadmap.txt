@@ -1,0 +1,5 @@
+Próximos passos:
+
+- Criar UML
+- Criar rotina de login
+- Criar um JWT
