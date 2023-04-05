@@ -4,6 +4,8 @@ import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.model.dto.RelatorioDTO;
 import br.com.analisador.domain.repository.ResultadoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +25,12 @@ public class RelatorioService {
     @Autowired
     private EmpresaService empresaService;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RelatorioService.class);
+
     @Transactional
     public RelatorioDTO paginaInicial(Empresa empresa){
+
+        LOGGER.info("Gerando página inicial do relatório para a empresa {}", empresa.getNome());
 
         RelatorioDTO relatorio = new RelatorioDTO();
         LocalDateTime hoje = LocalDateTime.now();
@@ -37,6 +43,8 @@ public class RelatorioService {
         }
         relatorio.setNomeRelatorio(this.encontrarStringMaisRepetida(nomeRelatorio));
         relatorio.setNumeroAnalise((long) listaResultados.size());
+
+        LOGGER.info("Página inicial do relatório gerada para a empresa {}", empresa.getNome());
 
         return relatorio;
     }

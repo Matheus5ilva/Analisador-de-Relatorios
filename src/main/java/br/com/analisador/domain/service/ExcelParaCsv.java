@@ -10,7 +10,12 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ExcelParaCsv {
+
+    private static final Logger logger = LoggerFactory.getLogger(ExcelParaCsv.class);
 
     public static String convertXlsxToCsv(InputStream inputStream) throws IOException {
         // Cria um workbook a partir do InputStream, detectando automaticamente o formato
@@ -37,6 +42,9 @@ public class ExcelParaCsv {
             // Adiciona uma quebra de linha no final de cada linha
             outputStream.write("\n".getBytes());
         }
+
+        // Log do CSV gerado
+        logger.info("CSV gerado com sucesso:\n{}", outputStream.toString());
 
         // Retorna o CSV como uma String
         return outputStream.toString();

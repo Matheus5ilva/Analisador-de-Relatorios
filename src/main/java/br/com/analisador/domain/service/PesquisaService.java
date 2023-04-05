@@ -6,6 +6,8 @@ import br.com.analisador.domain.model.Usuario;
 import br.com.analisador.domain.model.dto.ResultadoDTO;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.io.InputStream;
 
 @Service
 public class PesquisaService {
+
+    private static final Logger logger = LoggerFactory.getLogger(PesquisaService.class);
 
     @Autowired
     private ResultadoService resultadoService;
@@ -46,6 +50,7 @@ public class PesquisaService {
 
             return resultadoDTO;
         } catch (IOException e) {
+            logger.error("Erro na pesquisa", e);
             throw new RuntimeException(e);
         }
 
@@ -61,6 +66,7 @@ public class PesquisaService {
         resultado.setNumeroToken(Integer.parseInt(this.gerarResposta(resposta, false)));
         resultadoService.salvar(resultado);
 
+        logger.info("Resultado salvo: {}", resultado);
     }
 
     private String gerarResposta(String response, @NotNull Boolean ehAnalise){
