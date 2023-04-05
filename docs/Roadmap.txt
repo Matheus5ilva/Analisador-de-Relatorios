@@ -3,3 +3,6 @@ Próximos passos:
 - Criar UML
 - Criar rotina de login
 - Criar um JWT
+- Criar um WAR
+- Alterar o HELP.md
+- Criar o README.md
