@@ -99,6 +99,11 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -115,6 +120,9 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

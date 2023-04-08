@@ -1,0 +1,6 @@
+{
+  "nome":"Empresa Teste Unitario Json",
+  "tipoPessoa":"EMPRESA",
+  "ativo":true,
+  "chaveApiKey":"API_KEY"
+}

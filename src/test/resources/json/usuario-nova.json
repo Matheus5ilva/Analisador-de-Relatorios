@@ -1,0 +1,10 @@
+{
+  "nome":"Usuário Teste Unitario JSON",
+  "tipoPessoa":"USUARIO",
+  "ativo":true,
+  "empresa":{
+    "id": 1
+  },
+  "email":"usuario.teste@gmail.com",
+  "tipoUsuario":"ADMINISTRADOR"
+}
