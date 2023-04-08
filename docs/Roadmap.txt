@@ -1,6 +1,7 @@
 Próximos passos:
 
 - Criar UML
+- Criar Testes Unitarios
 - Criar rotina de login
 - Criar um JWT
 - Criar um WAR ou JAR
