@@ -42,9 +42,8 @@ public class OpenAIGPTService {
         try (var response = httpClient.execute(httpPost)) {
             String jsonResponse = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
             JSONObject jsonObject = new JSONObject(jsonResponse);
-            String text = jsonObject.getJSONArray("choices").getJSONObject(0).getString("text");
-            logger.info("OpenAI GPT generated text: {}", text);
-            return text;
+            logger.info("OpenAI GPT generated text:");
+            return jsonResponse;
         } catch (IOException e) {
             logger.error("Failed to generate text with OpenAI GPT: {}", e.getMessage(), e);
             throw e;

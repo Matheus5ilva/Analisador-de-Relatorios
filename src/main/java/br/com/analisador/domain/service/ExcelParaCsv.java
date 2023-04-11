@@ -44,7 +44,7 @@ public class ExcelParaCsv {
         }
 
         // Log do CSV gerado
-        logger.info("CSV gerado com sucesso:\n{}", outputStream.toString());
+        logger.info("CSV gerado com sucesso.");
 
         // Retorna o CSV como uma String
         return outputStream.toString();

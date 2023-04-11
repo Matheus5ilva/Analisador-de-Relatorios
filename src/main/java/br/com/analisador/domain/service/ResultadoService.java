@@ -19,7 +19,7 @@ public class ResultadoService {
 
     @Transactional
     public Resultado salvar(Resultado resultado) {
-        logger.info("Salvando resultado: {}", resultado);
+        logger.info("Salvando resultado");
         Resultado resultadoSalvo = resultadoRepository.save(resultado);
         logger.info("Resultado salvo com sucesso: {}", resultadoSalvo);
         return resultadoSalvo;
