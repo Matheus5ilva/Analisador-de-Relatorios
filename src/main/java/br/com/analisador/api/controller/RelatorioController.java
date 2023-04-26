@@ -1,7 +1,7 @@
 package br.com.analisador.api.controller;
 
 import br.com.analisador.domain.model.Empresa;
-import br.com.analisador.domain.model.dto.RelatorioDTO;
+import br.com.analisador.api.model.dto.RelatorioDTO;
 import br.com.analisador.domain.service.EmpresaService;
 import br.com.analisador.domain.service.RelatorioService;
 import org.slf4j.Logger;

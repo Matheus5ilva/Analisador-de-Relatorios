@@ -3,7 +3,7 @@ package br.com.analisador.domain.service;
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.model.Usuario;
-import br.com.analisador.domain.model.dto.ResultadoDTO;
+import br.com.analisador.api.model.dto.ResultadoDTO;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.slf4j.Logger;

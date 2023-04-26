@@ -1,10 +1,8 @@
 package br.com.analisador;
 
 import br.com.analisador.domain.model.Empresa;
-import br.com.analisador.domain.model.dto.EmpresaDTO;
 import br.com.analisador.domain.model.enums.TipoPessoa;
 import br.com.analisador.domain.repository.EmpresaRepository;
-import br.com.analisador.domain.service.EmpresaService;
 import br.com.analisador.util.ResourceUtils;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

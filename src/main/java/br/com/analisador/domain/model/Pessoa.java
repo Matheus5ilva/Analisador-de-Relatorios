@@ -2,6 +2,9 @@ package br.com.analisador.domain.model;
 
 import br.com.analisador.core.validation.Groups;
 import br.com.analisador.domain.model.enums.TipoPessoa;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 import javax.persistence.*;
@@ -9,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 @Entity
@@ -29,16 +34,17 @@ public class Pessoa implements Serializable{
 
     private Boolean ativo;
 
-    public Pessoa(Long id, String nome, TipoPessoa tipoPessoa, Boolean ativo) {
-        this.id = id;
-        this.nome = nome;
-        this.tipoPessoa = tipoPessoa;
-        this.ativo = ativo;
-    }
+    @JsonIgnore
+    @CreationTimestamp
+    @Column(nullable = false, columnDefinition = "datetime")
+    private OffsetDateTime dataCadastro;
 
-    public Pessoa() {
-    }
+    @JsonIgnore
+    @UpdateTimestamp
+    @Column(nullable = false, columnDefinition = "datetime")
+    private OffsetDateTime dataAtualizacao;
 
+    /** Getter e Setter **/
     public Long getId() {
         return id;
     }
@@ -69,6 +75,22 @@ public class Pessoa implements Serializable{
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public OffsetDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(OffsetDateTime dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public OffsetDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(OffsetDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 
     @Override

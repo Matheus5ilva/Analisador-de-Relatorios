@@ -24,19 +24,7 @@ public class Resultado {
     @CreationTimestamp
     private LocalDateTime dataHoraAnalise;
 
-    public Resultado() {
-    }
-
-    public Resultado(Long id, String nomeRelatorio, String analise, Integer numeroToken, Empresa empresa, Usuario usuario, LocalDateTime dataHoraAnalise) {
-        this.id = id;
-        this.nomeRelatorio = nomeRelatorio;
-        this.analise = analise;
-        this.numeroToken = numeroToken;
-        this.empresa = empresa;
-        this.usuario = usuario;
-        this.dataHoraAnalise = dataHoraAnalise;
-    }
-
+    /** Getter e Setter **/
     public Long getId() {
         return id;
     }

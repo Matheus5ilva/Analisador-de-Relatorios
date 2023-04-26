@@ -1,6 +1,6 @@
 package br.com.analisador.api.controller;
 
-import br.com.analisador.domain.model.dto.ResultadoDTO;
+import br.com.analisador.api.model.dto.ResultadoDTO;
 import br.com.analisador.domain.service.PesquisaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

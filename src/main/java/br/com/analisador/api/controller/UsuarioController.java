@@ -1,9 +1,11 @@
 package br.com.analisador.api.controller;
 
+import br.com.analisador.api.model.assembler.UsuarioDTOAssemblerDisassembler;
+import br.com.analisador.api.model.dto.inputs.UsuarioInputDTO;
 import br.com.analisador.domain.exception.NegocioException;
 import br.com.analisador.domain.exception.UsuarioNaoEncontradoException;
 import br.com.analisador.domain.model.Usuario;
-import br.com.analisador.domain.model.dto.UsuarioDTO;
+import br.com.analisador.api.model.dto.UsuarioDTO;
 import br.com.analisador.domain.repository.UsuarioRepository;
 import br.com.analisador.domain.service.EmpresaService;
 import br.com.analisador.domain.service.UsuarioService;
@@ -30,34 +32,40 @@ public class UsuarioController {
     @Autowired
     private EmpresaService empresaService;
 
+    @Autowired
+    private UsuarioDTOAssemblerDisassembler usuarioDTOAssemblerDisassembler;
+
     private final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
     @GetMapping
-    private List<Usuario> listaUsuario() {
+    private List<UsuarioDTO> listaUsuario() {
         logger.info("Buscando lista de usuários");
-        return usuarioRepository.findAll();
+        return usuarioDTOAssemblerDisassembler.toCollectionDto(usuarioRepository.findAll());
     }
 
     @GetMapping(value = "/{usuarioId}")
-    public Usuario detalharUsuario(@PathVariable Long usuarioId) {
+    public UsuarioDTO detalharUsuario(@PathVariable Long usuarioId) {
         logger.info("Detalhando usuário com id {}", usuarioId);
-        return usuarioService.buscarOuFalhar(usuarioId);
+        Usuario usuario = usuarioService.buscarOuFalhar(usuarioId);
+        return usuarioDTOAssemblerDisassembler.toDTO(usuario);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario criarUsuario(@RequestBody @Valid UsuarioDTO usuarioDto) {
+    public UsuarioDTO criarUsuario(@RequestBody @Valid UsuarioInputDTO usuarioDto) {
         logger.info("Criando novo usuário: {}", usuarioDto.toString());
-        return usuarioService.salvar(usuarioDto);
+        Usuario usuario = usuarioDTOAssemblerDisassembler.toDomainObject(usuarioDto);
+        return usuarioDTOAssemblerDisassembler.toDTO(usuarioService.salvar(usuario));
     }
 
     @PutMapping(value = "/editar/{usuarioId}")
-    public Usuario editarUsuario(@PathVariable Long usuarioId, @RequestBody @Valid UsuarioDTO usuarioDto) {
+    public UsuarioDTO editarUsuario(@PathVariable Long usuarioId, @RequestBody @Valid UsuarioInputDTO usuarioDto) {
         try {
-            Usuario usuarioAtual = usuarioService.buscarOuFalhar(usuarioId);
-            BeanUtils.copyProperties(usuarioDto, usuarioAtual, "id");
             logger.info("Atualizando usuário com id {}: {}", usuarioId, usuarioDto.toString());
-            return usuarioService.atualizar(usuarioAtual);
+            Usuario usuario = usuarioDTOAssemblerDisassembler.toDomainObject(usuarioDto);
+            Usuario usuarioAtual = usuarioService.buscarOuFalhar(usuarioId);
+            BeanUtils.copyProperties(usuario, usuarioAtual, "id", "dataCadastro");
+            return usuarioDTOAssemblerDisassembler.toDTO(usuarioService.salvar(usuarioAtual));
         } catch (UsuarioNaoEncontradoException usuarioException) {
             logger.error("Usuário não encontrado ao tentar atualizar usuário com id {}: {}", usuarioId, usuarioDto.toString(), usuarioException);
             throw new NegocioException(usuarioException.getMessage(), usuarioException);

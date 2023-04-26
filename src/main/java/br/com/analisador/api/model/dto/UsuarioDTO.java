@@ -1,35 +1,26 @@
-package br.com.analisador.domain.model.dto;
+package br.com.analisador.api.model.dto;
 
-import br.com.analisador.core.validation.Groups;
-import br.com.analisador.domain.model.Empresa;
-import br.com.analisador.domain.model.Usuario;
 import br.com.analisador.domain.model.enums.TipoPessoa;
 import br.com.analisador.domain.model.enums.TipoUsuario;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.groups.ConvertGroup;
-import javax.validation.groups.Default;
-
 public class UsuarioDTO {
 
-    @NotBlank
+    private Long id;
     private String nome;
-
-    @NotNull
     private TipoPessoa tipoPessoa;
-    @NotNull
     private Boolean ativo;
-    @Valid
-    @ConvertGroup(from = Default.class, to = Groups.EmpresaId.class)
-    @NotNull
-    private Empresa empresa;
-    @Email
     private String email;
-    @NotNull
     private TipoUsuario tipoUsuario;
+    private UsuarioEmpresaDTO empresa;
+
+    /** Getter e Setter **/
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -55,11 +46,11 @@ public class UsuarioDTO {
         this.ativo = ativo;
     }
 
-    public Empresa getEmpresa() {
+    public UsuarioEmpresaDTO getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
+    public void setEmpresa(UsuarioEmpresaDTO empresa) {
         this.empresa = empresa;
     }
 
@@ -79,7 +70,4 @@ public class UsuarioDTO {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Usuario transformaObjeto(){
-        return new Usuario(null, this.getNome(), this.getTipoPessoa(), this.getAtivo(), this.getEmpresa(), this.getEmail(), this.getTipoUsuario());
-    }
 }

@@ -1,10 +1,11 @@
-package br.com.analisador.domain.model.dto;
+package br.com.analisador.api.model.dto;
 
 public class RelatorioDTO {
 
     private Long numeroAnalise;
     private String nomeRelatorio;
 
+    /** Getter e Setter **/
     public Long getNumeroAnalise() {
         return numeroAnalise;
     }

@@ -4,7 +4,6 @@ import br.com.analisador.domain.exception.EntidadeEmUsoException;
 import br.com.analisador.domain.exception.UsuarioNaoEncontradoException;
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Usuario;
-import br.com.analisador.domain.model.dto.UsuarioDTO;
 import br.com.analisador.domain.repository.UsuarioRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,23 +27,12 @@ public class UsuarioService {
     private EmpresaService empresaService;
 
     @Transactional
-    public Usuario salvar(UsuarioDTO usuarioDto) {
-        logger.info("Salvando usuário: {}", usuarioDto);
-        Empresa empresa = empresaService.buscarOuFalhar(usuarioDto.getEmpresa().getId());
-        usuarioDto.setEmpresa(empresa);
-        Usuario usuario = usuarioDto.transformaObjeto();
-        usuario = usuarioRepository.save(usuario);
-        logger.info("Usuário salvo: {}", usuario);
-        return usuario;
-    }
-
-    @Transactional
-    public Usuario atualizar(Usuario usuario) {
-        logger.info("Atualizando usuário: {}", usuario);
+    public Usuario salvar(Usuario usuario) {
+        logger.info("Salvando usuário: {}", usuario);
         Empresa empresa = empresaService.buscarOuFalhar(usuario.getEmpresa().getId());
         usuario.setEmpresa(empresa);
         usuario = usuarioRepository.save(usuario);
-        logger.info("Usuário atualizado: {}", usuario);
+        logger.info("Usuário salvo: {}", usuario);
         return usuario;
     }
 

@@ -2,7 +2,7 @@ package br.com.analisador.domain.service;
 
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Resultado;
-import br.com.analisador.domain.model.dto.RelatorioDTO;
+import br.com.analisador.api.model.dto.RelatorioDTO;
 import br.com.analisador.domain.repository.ResultadoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

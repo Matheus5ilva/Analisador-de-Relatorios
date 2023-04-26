@@ -3,6 +3,8 @@ package br.com.analisador.domain.model;
 import br.com.analisador.core.validation.Groups;
 import br.com.analisador.domain.model.enums.TipoPessoa;
 import br.com.analisador.domain.model.enums.TipoUsuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -20,22 +22,13 @@ public class Usuario extends Pessoa{
     @NotNull
     @ManyToOne
     private Empresa empresa;
+
     @Email
     private String email;
     @NotNull
     private TipoUsuario tipoUsuario;
 
-    public Usuario() {
-        super();
-    }
-
-    public Usuario(Long id, String nome, TipoPessoa tipoPessoa, Boolean ativo, Empresa empresa, String email, TipoUsuario tipoUsuario) {
-        super(id, nome, tipoPessoa, ativo);
-        this.empresa = empresa;
-        this.email = email;
-        this.tipoUsuario = tipoUsuario;
-    }
-
+    /** Getter e Setter **/
     public Empresa getEmpresa() {
         return empresa;
     }

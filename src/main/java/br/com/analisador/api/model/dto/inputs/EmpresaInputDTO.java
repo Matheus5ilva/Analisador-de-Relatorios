@@ -1,12 +1,12 @@
-package br.com.analisador.domain.model.dto;
+package br.com.analisador.api.model.dto.inputs;
 
-import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.enums.TipoPessoa;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class EmpresaDTO {
+public class EmpresaInputDTO {
+
     @NotBlank
     private String nome;
     @NotNull
@@ -16,6 +16,7 @@ public class EmpresaDTO {
     @NotBlank
     private String chaveApiKey;
 
+    /** Getter e Setter **/
     public String getNome() {
         return nome;
     }
@@ -46,9 +47,5 @@ public class EmpresaDTO {
 
     public void setChaveApiKey(String chaveApiKey) {
         this.chaveApiKey = chaveApiKey;
-    }
-
-    public Empresa transformaEmObjeto(){
-        return new Empresa(null, this.getNome(), this.getTipoPessoa(), this.getAtivo(), this.getChaveApiKey());
     }
 }

@@ -1,7 +1,8 @@
 Próximos passos:
 
+- Refatorar as entidades
 - Criar UML
-- Criar Testes Unitarios (Iniciaddo)
+- Criar Testes Unitarios (Iniciado)
 - Criar rotina de login
 - Criar um JWT
 - Criar um WAR ou JAR

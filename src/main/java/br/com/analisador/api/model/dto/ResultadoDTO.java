@@ -1,10 +1,11 @@
-package br.com.analisador.domain.model.dto;
+package br.com.analisador.api.model.dto;
 
 public class ResultadoDTO {
 
     private String nomeRelatorio;
     private String analise;
 
+    /** Getter e Setter **/
     public String getNomeRelatorio() {
         return nomeRelatorio;
     }

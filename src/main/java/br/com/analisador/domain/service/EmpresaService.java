@@ -2,10 +2,7 @@ package br.com.analisador.domain.service;
 
 import br.com.analisador.domain.exception.EmpresaNaoEncontradoException;
 import br.com.analisador.domain.exception.EntidadeEmUsoException;
-import br.com.analisador.domain.exception.UsuarioNaoEncontradoException;
 import br.com.analisador.domain.model.Empresa;
-import br.com.analisador.domain.model.Usuario;
-import br.com.analisador.domain.model.dto.EmpresaDTO;
 import br.com.analisador.domain.repository.EmpresaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,15 +23,8 @@ public class EmpresaService {
     private EmpresaRepository empresaRepository;
 
     @Transactional
-    public Empresa salvar(EmpresaDTO empresaDto) {
-        Empresa empresa = empresaDto.transformaEmObjeto();
+    public Empresa salvar(Empresa empresa) {
         logger.debug("Salvando empresa: {}", empresa);
-        return empresaRepository.save(empresa);
-    }
-
-    @Transactional
-    public Empresa atualizar(Empresa empresa) {
-        logger.debug("Atualizando empresa: {}", empresa);
         return empresaRepository.save(empresa);
     }
 

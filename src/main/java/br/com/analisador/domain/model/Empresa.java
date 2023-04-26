@@ -11,14 +11,7 @@ public class Empresa extends Pessoa {
     @NotBlank
     private String chaveApiKey;
 
-    public Empresa() {
-    }
-
-    public Empresa(Long id, String nome, TipoPessoa tipoPessoa, Boolean ativo, String chaveApiKey) {
-        super(id, nome, tipoPessoa, ativo);
-        this.chaveApiKey = chaveApiKey;
-    }
-
+    /** Getter e Setter **/
     public String getChaveApiKey() {
         return chaveApiKey;
     }
