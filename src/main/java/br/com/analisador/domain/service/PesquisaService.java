@@ -30,8 +30,9 @@ public class PesquisaService {
     private OpenAIGPTService openAIGPTService;
 
     @Transactional
-    public ResultadoDTO pesquisar(InputStream arquivo, String nomeRelatorio, Long usuarioId) {
+    public Resultado pesquisar(InputStream arquivo, String nomeRelatorio, Long usuarioId) {
         try {
+            Resultado resultado = new Resultado();
 
             Usuario usuario = usuarioService.buscarOuFalhar(usuarioId);
             Empresa empresa = empresaService.buscarOuFalhar(usuario.getEmpresa().getId());
@@ -40,33 +41,21 @@ public class PesquisaService {
             String chave = empresa.getChaveApiKey();
 
             String response = openAIGPTService.generateText(chave,csv);
-            String analise = this.gerarResposta(response, true);
 
-            ResultadoDTO resultadoDTO = new ResultadoDTO();
-            resultadoDTO.setNomeRelatorio(nomeRelatorio);
-            resultadoDTO.setAnalise(analise);
+            resultado.setNomeRelatorio(nomeRelatorio);
+            resultado.setEmpresa(empresa);
+            resultado.setUsuario(usuario);
 
-            this.salvaResultado(usuario, empresa, nomeRelatorio,response);
+            resultado.setAnalise(this.gerarResposta(response, true));
+            resultado.setNumeroToken(Integer.parseInt(this.gerarResposta(response, false)));
 
-            return resultadoDTO;
+
+            return resultadoService.salvar(resultado);
         } catch (IOException e) {
             logger.error("Erro na pesquisa", e);
             throw new RuntimeException(e);
         }
 
-    }
-
-    private void salvaResultado(Usuario usuario, Empresa empresa, String nomeRelatorio, String resposta){
-        Resultado resultado = new Resultado();
-        resultado.setNomeRelatorio(nomeRelatorio);
-        resultado.setEmpresa(empresa);
-        resultado.setUsuario(usuario);
-
-        resultado.setAnalise(this.gerarResposta(resposta, true));
-        resultado.setNumeroToken(Integer.parseInt(this.gerarResposta(resposta, false)));
-        resultadoService.salvar(resultado);
-
-        logger.info("Resultado salvo: {}", resultado);
     }
 
     private String gerarResposta(String response, @NotNull Boolean ehAnalise){

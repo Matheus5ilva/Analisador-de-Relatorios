@@ -32,7 +32,7 @@ public class UsuarioService {
         Empresa empresa = empresaService.buscarOuFalhar(usuario.getEmpresa().getId());
         usuario.setEmpresa(empresa);
         usuario = usuarioRepository.save(usuario);
-        logger.info("Usuário salvo: {}", usuario);
+        logger.info("Usuário salvo: {}", usuario.getId());
         return usuario;
     }
 

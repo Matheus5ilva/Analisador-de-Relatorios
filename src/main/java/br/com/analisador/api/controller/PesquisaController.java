@@ -1,6 +1,8 @@
 package br.com.analisador.api.controller;
 
+import br.com.analisador.api.model.assembler.ResultadoDTOAssemblerDisassembler;
 import br.com.analisador.api.model.dto.ResultadoDTO;
+import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.service.PesquisaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,9 @@ public class PesquisaController {
     @Autowired
     private PesquisaService pesquisaService;
 
+    @Autowired
+    private ResultadoDTOAssemblerDisassembler resultadoDTOAssemblerDisassembler;
+
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResultadoDTO realizarConsulta(@RequestPart MultipartFile arquivo, @RequestParam("nomeRelatorio") String nome,
@@ -29,9 +34,9 @@ public class PesquisaController {
 
         try {
             logger.info("Iniciando realização de consulta");
-            ResultadoDTO resultado = pesquisaService.pesquisar((InputStream) arquivo.getInputStream(), nome, usuarioId);
+            Resultado resultado = pesquisaService.pesquisar((InputStream) arquivo.getInputStream(), nome, usuarioId);
             logger.info("Consulta realizada com sucesso");
-            return resultado;
+            return resultadoDTOAssemblerDisassembler.toDTO(resultado);
         } catch (IOException e) {
             logger.error("Erro ao realizar consulta", e);
             throw new RuntimeException(e);
