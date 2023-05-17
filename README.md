@@ -20,7 +20,7 @@ Toda a tecnologia utilizada na construção da *API REST*.
 - `Spring Boot`: Foi utilizado o framework Spring por ser mais popular em aplicação.
 - `H2 Console`: H2 é um banco de dados em memoria que só 'funciona' quando a aplicação começa.
 - `JPA`: JPA é um framework de comunição da aplicação com banco de dados. 
-  - #### Para mais informação verificar o `*pom.xml*`
+  - #### Para mais informação verificar o *pom.xml*
 
 
 ### Exemplo
@@ -70,7 +70,7 @@ Evolições futuras a ser executadas.
 
 ### Comunidade
 
-Se quiser contribuir com o projeto, faça alguma tarefa no Roadmap, será de muito agrado. 
+Se quiser contribuir com o projeto, faça alguma tarefa do roadmap, será de muito agrado. 
 
 
 ## Muito Obrigado!
