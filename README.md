@@ -70,7 +70,7 @@ Evolições futuras a ser executadas.
 
 ### Comunidade
 
-Se quiser contribuir com o projeto, faça alguma tarefa do roadmap, será de muito agrado. 
+Se quiser contribuir com o projeto, faça alguma tarefa no Roadmap, será de muito agrado. 
 
 
 ## Muito Obrigado!
