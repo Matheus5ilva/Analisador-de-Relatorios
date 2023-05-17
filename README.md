@@ -64,7 +64,7 @@ Evolições futuras a ser executadas.
 - [ ] Criar o front-end do projeto (*Verificar a possibilidade de um projeto separado*)
 - [ ] Criar UML
 - [X] Criar Testes Unitarios 
-- [ ] Criar rotina de login
+- [ ] Criar rotina de login e segurança
 - [ ] Criar um JWT
 - [ ] Criar um WAR ou JAR
 - [ ] Alterar o HELP.md
