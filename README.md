@@ -60,6 +60,8 @@ Todos os *endpoints* com Json de exemplo.
 Evolições futuras a ser executadas. 
 
 - [X] Refatorar as entidades
+- [ ] Criar a rotina da geração de PDF no Java
+- [ ] Criar o front-end do projeto (*Verificar a possibilidade de um projeto separado*)
 - [ ] Criar UML
 - [X] Criar Testes Unitarios 
 - [ ] Criar rotina de login
