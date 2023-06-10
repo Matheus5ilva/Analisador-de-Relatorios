@@ -20,6 +20,7 @@ Toda a tecnologia utilizada na construção da *API REST*.
 - `Spring Boot`: Foi utilizado o framework Spring por ser mais popular em aplicação.
 - `H2 Console`: H2 é um banco de dados em memoria que só 'funciona' quando a aplicação começa.
 - `JPA`: JPA é um framework de comunição da aplicação com banco de dados. 
+- `Spring Security` : Modulo do spring para segurança.
   - #### Para mais informação verificar o *pom.xml*
 
 
@@ -61,10 +62,10 @@ Evolições futuras a ser executadas.
 
 - [X] Refatorar as entidades
 - [ ] Criar a rotina da geração de PDF no Java
-- [ ] Criar o front-end do projeto (*Verificar a possibilidade de um projeto separado*)
+- [ ] Criar o front-end do projeto (*Verificar a possibilidade de um projeto separado*)(*Possivelmente será Thymeleaf*)
 - [ ] Criar UML
 - [X] Criar Testes Unitarios 
-- [ ] Criar rotina de login e segurança
+- [X] Criar rotina de login e segurança(*Ainda em memória, **Login: matheus | Senha: 123***)
 - [ ] Criar um JWT
 - [ ] Criar um WAR ou JAR
 - [ ] Alterar o HELP.md
