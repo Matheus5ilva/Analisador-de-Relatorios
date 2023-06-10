@@ -1,4 +1,4 @@
-package br.com.analisador.domain.service;
+package br.com.analisador.core.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,9 +13,9 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ExcelParaCsv {
+public class ExcelParaCsvUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(ExcelParaCsv.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExcelParaCsvUtil.class);
 
     public static String convertXlsxToCsv(InputStream inputStream) throws IOException {
         // Cria um workbook a partir do InputStream, detectando automaticamente o formato

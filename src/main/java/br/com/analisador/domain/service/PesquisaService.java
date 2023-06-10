@@ -1,9 +1,9 @@
 package br.com.analisador.domain.service;
 
+import br.com.analisador.core.utils.ExcelParaCsvUtil;
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.model.Usuario;
-import br.com.analisador.api.model.dto.ResultadoDTO;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -37,10 +37,10 @@ public class PesquisaService {
             Usuario usuario = usuarioService.buscarOuFalhar(usuarioId);
             Empresa empresa = empresaService.buscarOuFalhar(usuario.getEmpresa().getId());
 
-            String csv = ExcelParaCsv.convertXlsxToCsv(arquivo);
+            String csv = ExcelParaCsvUtil.convertXlsxToCsv(arquivo);
             String chave = empresa.getChaveApiKey();
 
-            String response = openAIGPTService.generateText(chave,csv);
+            String response = openAIGPTService.generateText(chave, csv);
 
             resultado.setNomeRelatorio(nomeRelatorio);
             resultado.setEmpresa(empresa);
