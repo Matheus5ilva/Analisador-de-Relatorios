@@ -2,6 +2,7 @@ package br.com.analisador.api.model.dto;
 
 import br.com.analisador.domain.model.enums.TipoPessoa;
 import br.com.analisador.domain.model.enums.TipoUsuario;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UsuarioDTO {
 
@@ -12,6 +13,7 @@ public class UsuarioDTO {
     private String email;
     private TipoUsuario tipoUsuario;
     private UsuarioEmpresaDTO empresa;
+    private String senha;
 
     /** Getter e Setter **/
     public Long getId() {
@@ -70,4 +72,10 @@ public class UsuarioDTO {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

@@ -65,7 +65,7 @@ Evolições futuras a ser executadas.
 - [ ] Criar o front-end do projeto (*Verificar a possibilidade de um projeto separado*)(*Possivelmente será Thymeleaf*)
 - [ ] Criar UML
 - [X] Criar Testes Unitarios 
-- [X] Criar rotina de login e segurança(*Ainda em memória, **Login: matheus | Senha: 123***)
+- [X] Criar rotina de login e segurança
 - [ ] Criar um JWT
 - [ ] Criar um WAR ou JAR
 - [ ] Alterar o HELP.md

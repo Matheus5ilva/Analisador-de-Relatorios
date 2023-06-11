@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -29,6 +30,7 @@ public class UsuarioService {
     @Transactional
     public Usuario salvar(Usuario usuario) {
         logger.info("Salvando usuário: {}", usuario);
+        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
         Empresa empresa = empresaService.buscarOuFalhar(usuario.getEmpresa().getId());
         usuario.setEmpresa(empresa);
         usuario = usuarioRepository.save(usuario);

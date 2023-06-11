@@ -25,6 +25,8 @@ public class UsuarioInputDTO {
     @NotNull
     private TipoUsuario tipoUsuario;
 
+    @NotBlank
+    private String senha;
     /** Getter e Setter **/
     public String getNome() {
         return nome;
@@ -74,4 +76,11 @@ public class UsuarioInputDTO {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }
