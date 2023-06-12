@@ -97,6 +97,7 @@ class CadastroUsuarioIT {
 		novoUsuario.setEmpresa(novaEmpresa);
 		novoUsuario.setEmail("email@email.com");
 		novoUsuario.setAtivo(true);
+		novoUsuario.setSenha("123");
 
 		usuarioRepository.save(novoUsuario);
 

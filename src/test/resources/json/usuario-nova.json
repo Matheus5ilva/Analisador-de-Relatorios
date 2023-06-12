@@ -6,5 +6,6 @@
     "id": 1
   },
   "email":"usuario.teste@gmail.com",
+  "senha" : "123",
   "tipoUsuario":"ADMINISTRADOR"
 }
