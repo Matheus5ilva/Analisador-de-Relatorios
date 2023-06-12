@@ -50,22 +50,37 @@ Todos os *endpoints* com Json de exemplo.
 - `[POST] localhost:8080/pesquisas`: Realiza a análise. 
   - O *JSON*  para preencher: 
   - ```{"arquivo": <file em xls>,"nomeRelatorio": "nome do relatorio", "usuarioId: 1 }```
-
+- `[GET] localhost:8080/pesquisas/{idPesquisa}` : Realiza a geração do PDF da pesquisa. *A duração do PDF é de 15 minutos até ser apagado do servidor*
 #### Relatório
 - `[GET] localhost:8080/relatorio/{idUsuario}`: Mostra o número de analise realizada e qual o relatório mais pesquisa.
     - A ideia é ser no index, mas ainda pode ser refatorado
 
+### Perfil de acessos
+#### Administrador
 
+- `[GET, PUT] localhost:8080/empresas`
+- `[GET, POST,PUT, DELETE] localhost:8080/usuarios`
+- `[GET, POST] localhost:8080/pesquisas`
+
+#### Comum(User)
+
+- `[GET, PUT] localhost:8080/usuarios`
+- `[GET, POST] localhost:8080/pesquisas`
+
+###### Observação do *Perfil do acesso*
+
+- **Para criar empresa, será via banco de dados.**
 ### Roadmap 
 
 Evolições futuras a ser executadas. 
 
 - [X] Refatorar as entidades
-- [ ] Criar a rotina da geração de PDF no Java
+- [x] Criar a rotina da geração de PDF no Java
 - [ ] Criar o front-end do projeto (*Verificar a possibilidade de um projeto separado*)(*Possivelmente será Thymeleaf*)
 - [ ] Criar UML
 - [X] Criar Testes Unitarios 
 - [X] Criar rotina de login e segurança
+- [ ] Criar rotinas de criação de empresas. (*'Super administrador'*)
 - [ ] Criar um JWT
 - [ ] Criar um WAR ou JAR
 - [ ] Alterar o HELP.md

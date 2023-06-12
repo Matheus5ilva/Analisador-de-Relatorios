@@ -1,5 +1,6 @@
 package br.com.analisador.domain.service;
 
+import br.com.analisador.domain.exception.EmpresaNaoEncontradoException;
 import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.repository.ResultadoRepository;
 import org.slf4j.Logger;
@@ -23,5 +24,15 @@ public class ResultadoService {
         Resultado resultadoSalvo = resultadoRepository.save(resultado);
         logger.info("Resultado salvo com sucesso: {}", resultadoSalvo);
         return resultadoSalvo;
+    }
+
+    @Transactional
+    public Resultado buscarOuFalhar(Long pesquisaId) {
+        logger.info("Buscando pesquisa de id: {}", pesquisaId);
+        return resultadoRepository.findById(pesquisaId)
+                .orElseThrow(() -> {
+                    logger.error("Resultado de id {} não encontrado", pesquisaId);
+                    return new EmpresaNaoEncontradoException(pesquisaId);
+                });
     }
 }

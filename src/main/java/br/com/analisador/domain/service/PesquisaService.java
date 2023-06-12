@@ -1,6 +1,8 @@
 package br.com.analisador.domain.service;
 
 import br.com.analisador.core.utils.ExcelParaCsvUtil;
+import br.com.analisador.core.utils.GeradorPDFUtil;
+import br.com.analisador.domain.exception.EmpresaNaoEncontradoException;
 import br.com.analisador.domain.model.Empresa;
 import br.com.analisador.domain.model.Resultado;
 import br.com.analisador.domain.model.Usuario;
@@ -56,6 +58,16 @@ public class PesquisaService {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Transactional
+    public String gerarPdf(Long pesquisaId) {
+
+        Resultado resultado = resultadoService.buscarOuFalhar(pesquisaId);
+
+        String caminhoDoArquivo = new GeradorPDFUtil().gerarPDF(resultado);
+
+        return caminhoDoArquivo;
     }
 
     private String gerarResposta(String response, @NotNull Boolean ehAnalise){
