@@ -80,7 +80,7 @@ Evolições futuras a ser executadas.
 - [ ] Criar UML
 - [X] Criar Testes Unitarios 
 - [X] Criar rotina de login e segurança
-- [ ] Criar rotinas de criação de empresas. (*'Super administrador'*)
+- [X] Criar rotinas de criação de empresas. (*'Super administrador'*)
 - [ ] Criar um JWT
 - [ ] Criar um WAR ou JAR
 - [ ] Alterar o HELP.md
