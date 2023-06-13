@@ -29,43 +29,43 @@ Toda a tecnologia utilizada na construção da *API REST*.
 Todos os *endpoints* com Json de exemplo.
 
 #### Empresa
-- `[GET] localhost:8080/empresas`: Listar todas as empresas cadastradas.
-- `[GET] localhost:8080/empresas/{idEmpresa}`: Pegar informaçao de somente uma empresa.
-- `[POST] localhost:8080/empresas`: Cria uma empresa.
+- `[GET] localhost:8080/api/empresas`: Listar todas as empresas cadastradas.
+- `[GET] localhost:8080/api/empresas/{idEmpresa}`: Pegar informaçao de somente uma empresa.
+- `[POST] localhost:8080/api/empresas`: Cria uma empresa.
   - Existe um exemplo no caminho *src/test/resources/json/empresa-nova.json*
-- `[PUT] localhost:8080/empresas/{idEmpresa}`: Editar uma empresa.
+- `[PUT] localhost:8080/api/empresas/{idEmpresa}`: Editar uma empresa.
     - Existe um exemplo no caminho *src/test/resources/json/empresa-nova.json*
-- `[DELETE] localhost:8080/empresas/{idEmpresa}`: Apagar uma empresa. 
+- `[DELETE] localhost:8080/api/empresas/{idEmpresa}`: Apagar uma empresa. 
   - Lembrando que se existir um funcionario, não será possivel apagar
 #### Usuário
-- `[GET] localhost:8080/usuarios`: Listar todos as usuários cadastradas.
-- `[GET] localhost:8080/empresas/{idUsuario}`: Pegar informaçao de somente de um usuário.
-- `[POST] localhost:8080/usuarios`: Cria um usuário.
+- `[GET] localhost:8080/api/usuarios`: Listar todos as usuários cadastradas.
+- `[GET] localhost:8080/api/empresas/{idUsuario}`: Pegar informaçao de somente de um usuário.
+- `[POST] localhost:8080/api/usuarios`: Cria um usuário.
     - Existe um exemplo no caminho *src/test/resources/json/usuario-nova.json*
-- `[PUT] localhost:8080/usuario/{idUsuario}`: Editar um usuário.
+- `[PUT] localhost:8080/api/usuario/{idUsuario}`: Editar um usuário.
     - Existe um exemplo no caminho *src/test/resources/json/usuario-nova.json*
-- `[DELETE] localhost:8080/empresas/{idEmpresa}`: Apagar um usuário.
+- `[DELETE] localhost:8080/api/empresas/{idEmpresa}`: Apagar um usuário.
 
 #### Pesquisa
-- `[POST] localhost:8080/pesquisas`: Realiza a análise. 
+- `[POST] localhost:8080/api/pesquisas`: Realiza a análise. 
   - O *JSON*  para preencher: 
   - ```{"arquivo": <file em xls>,"nomeRelatorio": "nome do relatorio", "usuarioId: 1 }```
-- `[GET] localhost:8080/pesquisas/{idPesquisa}` : Realiza a geração do PDF da pesquisa. *A duração do PDF é de 15 minutos até ser apagado do servidor*
+- `[GET] localhost:8080/api/pesquisas/{idPesquisa}` : Realiza a geração do PDF da pesquisa. *A duração do PDF é de 15 minutos até ser apagado do servidor*
 #### Relatório
-- `[GET] localhost:8080/relatorio/{idUsuario}`: Mostra o número de analise realizada e qual o relatório mais pesquisa.
+- `[GET] localhost:8080/api/relatorio/{idUsuario}`: Mostra o número de analise realizada e qual o relatório mais pesquisa.
     - A ideia é ser no index, mas ainda pode ser refatorado
 
 ### Perfil de acessos
 #### Administrador
 
-- `[GET, PUT] localhost:8080/empresas`
-- `[GET, POST,PUT, DELETE] localhost:8080/usuarios`
-- `[GET, POST] localhost:8080/pesquisas`
+- `[GET, PUT] localhost:8080/api/empresas`
+- `[GET, POST,PUT, DELETE] localhost:8080/api/usuarios`
+- `[GET, POST] localhost:8080/api/pesquisas`
 
 #### Comum(User)
 
-- `[GET, PUT] localhost:8080/usuarios`
-- `[GET, POST] localhost:8080/pesquisas`
+- `[GET, PUT] localhost:8080/api/usuarios`
+- `[GET, POST] localhost:8080/api/pesquisas`
 
 ###### Observação do *Perfil do acesso*
 
