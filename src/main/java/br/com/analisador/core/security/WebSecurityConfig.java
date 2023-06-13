@@ -26,14 +26,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/login/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/empresas/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT,"/empresas/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/usuarios/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.POST,"/usuarios/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT,"/usuarios/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.DELETE,"/usuarios/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/pesquisas/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.POST,"/pesquisas/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.GET,"/empresas/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.POST,"/empresas/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/empresas/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/empresas/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.GET,"/usuarios/**").hasAnyRole("ADMIN", "USER", "CUSTOM")
+                .antMatchers(HttpMethod.POST,"/usuarios/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.PUT,"/usuarios/**").hasAnyRole("ADMIN", "USER", "CUSTOM")
+                .antMatchers(HttpMethod.DELETE,"/usuarios/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.GET,"/pesquisas/**").hasAnyRole("ADMIN", "USER", "CUSTOM")
+                .antMatchers(HttpMethod.POST,"/pesquisas/**").hasAnyRole("ADMIN", "USER", "CUSTOM")
                 .anyRequest().authenticated()
                 .and()
                 .headers().frameOptions().disable()
@@ -45,6 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
+        auth.inMemoryAuthentication()
+                .withUser("admin")
+                .password(this.passwordEncoder().encode("admin123"))
+                .roles("ADMIN");
     }
 
     @Bean

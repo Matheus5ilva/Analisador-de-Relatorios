@@ -30,9 +30,9 @@ public class UsuarioDetails implements UserDetails {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         if (this.usuario.getTipoUsuario().equals(TipoUsuario.ADMINISTRADOR)) {
-            authorities.add(RoleModel.ROLE_ADMIN);
-        } else if (this.usuario.getTipoUsuario().equals(TipoUsuario.COMUM)) {
             authorities.add(RoleModel.ROLE_USER);
+        } else if (this.usuario.getTipoUsuario().equals(TipoUsuario.COMUM)) {
+            authorities.add(RoleModel.ROLE_CUSTOM);
         } else {
             throw new AccessDeniedException("Acesso negado");
         }
