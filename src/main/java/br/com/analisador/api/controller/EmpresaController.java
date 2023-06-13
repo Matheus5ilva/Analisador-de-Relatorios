@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/empresas")
+@RequestMapping(value = "/api/empresas")
 public class EmpresaController {
 
     private static final Logger logger = LoggerFactory.getLogger(EmpresaController.class);

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/relatorio")
+@RequestMapping(value = "/api/relatorio")
 public class RelatorioController {
 
     private static final Logger logger = LoggerFactory.getLogger(RelatorioController.class);

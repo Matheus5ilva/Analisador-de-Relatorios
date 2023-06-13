@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @RestController
-@RequestMapping(value = "/pesquisas")
+@RequestMapping(value = "/api/pesquisas")
 public class PesquisaController {
 
     private static final Logger logger = LoggerFactory.getLogger(PesquisaController.class);

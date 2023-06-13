@@ -15,7 +15,7 @@ public enum ProblemType {
     private String uri;
 
     ProblemType(String path, String title) {
-        this.uri = "localhost:8080" + path;
+        this.uri = "localhost:8080/api" + path;
         this.title = title;
     }
 
